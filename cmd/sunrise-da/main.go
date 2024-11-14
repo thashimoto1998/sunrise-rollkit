@@ -27,7 +27,7 @@ func main() {
 		log.Fatalln("Error parsing config file:", err)
 	}
 	ctx := context.Background()
-	da := sunrise.NewSunriseDA(config, ctx)
+	da := sunrise.NewSunriseDA(ctx, config)
 	srv := proxy.NewServer(da, grpc.Creds(insecure.NewCredentials()))
 	lis, err := net.Listen("tcp", config.GRPCServerAddress)
 	if err != nil {

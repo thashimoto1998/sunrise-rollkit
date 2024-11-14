@@ -32,9 +32,10 @@ type GetBlobResponse struct {
 }
 
 type Config struct {
-	ServerURL        string `json:"server_url"`
-	DataShardCount   uint32 `json:"data_shard_count"`
-	ParityShardCount uint32 `json:"parity_shard_count"`
+	ServerURL         string `json:"server_url"`
+	DataShardCount    uint32 `json:"data_shard_count"`
+	ParityShardCount  uint32 `json:"parity_shard_count"`
+	GRPCServerAddress string `json:"grpc_server_address"`
 }
 
 type SunriseDA struct {
@@ -42,8 +43,8 @@ type SunriseDA struct {
 	config Config
 }
 
-func NewSunriseDA(ctx context.Context, config Config) SunriseDA {
-	return SunriseDA{
+func NewSunriseDA(ctx context.Context, config Config) *SunriseDA {
+	return &SunriseDA{
 		ctx:    ctx,
 		config: config,
 	}
